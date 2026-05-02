@@ -9,6 +9,7 @@ type CustomAudioPlayerProps = {
   tieuDe: string;
   nhacSi: string;
   tep: string;
+  tepUrl?: string;
   hinh: string;
   anchorId: string;
 };
@@ -25,7 +26,14 @@ function dinhDangThoiGian(soGiay: number) {
   return `${String(phut).padStart(2, "0")}:${String(giay).padStart(2, "0")}`;
 }
 
-export default function CustomAudioPlayer({ tieuDe, nhacSi, tep, hinh, anchorId }: CustomAudioPlayerProps) {
+export default function CustomAudioPlayer({
+  tieuDe,
+  nhacSi,
+  tep,
+  tepUrl,
+  hinh,
+  anchorId,
+}: CustomAudioPlayerProps) {
   const playerId = `player-${tep}`;
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -34,7 +42,7 @@ export default function CustomAudioPlayer({ tieuDe, nhacSi, tep, hinh, anchorId 
   const [thoiGianHienTai, setThoiGianHienTai] = useState(0);
   const [thongBaoLoi, setThongBaoLoi] = useState<string | null>(null);
 
-  const duongDanNguon = `/audio/${encodeURIComponent(tep)}`;
+  const duongDanNguon = tepUrl || `/audio/${encodeURIComponent(tep)}`;
 
   useEffect(() => {
     const audioElement = audioRef.current;

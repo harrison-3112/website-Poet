@@ -7,6 +7,17 @@ import LazyPdfViewer from "./components/lazy-pdf-viewer";
 import ParallaxBackgroundVideo from "./components/parallax-background-video";
 import SectionDivider from "./components/section-divider";
 
+const mediaBaseUrl = process.env.NEXT_PUBLIC_MEDIA_BASE_URL?.replace(/\/$/, "") ?? "";
+
+function layMediaUrl(duongDan: string) {
+  if (!mediaBaseUrl) {
+    return duongDan;
+  }
+
+  const duongDanDaChuanHoa = duongDan.startsWith("/") ? duongDan : `/${duongDan}`;
+  return `${mediaBaseUrl}${duongDanDaChuanHoa}`;
+}
+
 const baiThoNoiBat = [
   {
     tieuDe: "Dòng Sông Xuân",
@@ -114,24 +125,28 @@ const danhSachPhoTho = [
     tieuDe: "Mùa Xuân Lung Linh",
     nhacSi: "Sáng tác: Ngô Đức Tâm",
     tep: "mua-xuan-lung-linh.mp3",
+    tepUrl: layMediaUrl("/audio/mua-xuan-lung-linh.mp3"),
     hinh: "/images/music/mua-xuan-lung-linh.png",
   },
   {
     tieuDe: "Hoa rừng",
     nhacSi: "Sáng tác: Ngô Đức Tâm",
     tep: "hoa-rung.mp3",
+    tepUrl: layMediaUrl("/audio/hoa-rung.mp3"),
     hinh: "/images/music/hoa-rung.png",
   },
   {
     tieuDe: "Hương Hoa Sữa",
     nhacSi: "Sáng tác: Ngô Đức Tâm",
     tep: "huong-hoa-sua.mp3",
+    tepUrl: layMediaUrl("/audio/huong-hoa-sua.mp3"),
     hinh: "/images/music/huong-hoa-sua.png",
   },
   {
     tieuDe: "Hương bưởi 1",
     nhacSi: "Sáng tác: Ngô Đức Tâm",
     tep: "huong-buoi-1.mp3",
+    tepUrl: layMediaUrl("/audio/huong-buoi-1.mp3"),
     hinh: "/images/music/huong-buoi-1.png",
   },
 ];
@@ -264,7 +279,7 @@ export default function Home() {
   return (
     <main className="relative min-h-screen overflow-x-clip text-[var(--color-ink)] paper-texture">
       <div aria-hidden className="page-bg-layer fixed inset-0 -z-10 overflow-hidden">
-        <ParallaxBackgroundVideo source="/video/hero-loop.mp4" />
+        <ParallaxBackgroundVideo source={layMediaUrl("/video/hero-loop.mp4")} />
         <div
           className="absolute inset-0 bg-cover bg-center opacity-24"
           style={{ backgroundImage: "url('/images/generated/gemini-e00.png')" }}
@@ -459,7 +474,7 @@ export default function Home() {
               </a>
               <a
                 className="rounded-full border border-[var(--color-mist)] px-5 py-2.5 text-sm font-medium text-[var(--color-ink)]"
-                href="/books/dong-song-xuan-ngo-duc-tam.pdf"
+                href={layMediaUrl("/books/dong-song-xuan-ngo-duc-tam.pdf")}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -493,7 +508,7 @@ export default function Home() {
             </div>
             <a
               className="rounded-full border border-[var(--color-mist)] px-4 py-2 text-sm font-medium text-[var(--color-ink)]"
-              href="/books/dong-song-xuan-ngo-duc-tam.pdf"
+              href={layMediaUrl("/books/dong-song-xuan-ngo-duc-tam.pdf")}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -502,7 +517,7 @@ export default function Home() {
           </div>
 
           <div className="mt-6">
-            <LazyPdfViewer tepPdf="/books/dong-song-xuan-ngo-duc-tam.pdf" tieuDe="Đọc tập thơ Dòng Sông Xuân" />
+            <LazyPdfViewer tepPdf={layMediaUrl("/books/dong-song-xuan-ngo-duc-tam.pdf")} tieuDe="Đọc tập thơ Dòng Sông Xuân" />
           </div>
 
           <p className="mt-4 text-sm leading-7 text-[var(--color-muted)]">
@@ -624,6 +639,7 @@ export default function Home() {
                   tieuDe={baiHat.tieuDe}
                   nhacSi={baiHat.nhacSi}
                   tep={baiHat.tep}
+                  tepUrl={baiHat.tepUrl}
                   hinh={baiHat.hinh}
                   anchorId={`pho-tho-${index + 1}`}
                 />
