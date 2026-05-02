@@ -1,0 +1,102 @@
+═══════════════════════════════════════════════════════
+  BACKGROUND IMAGE PROMPTS — NGÔ ĐỨC TÂM | DI SẢN THI CA
+  Dùng cho: landing page full-width background (section nền trang)
+  Tỉ lệ: 16:9 hoặc 3:2 | Mục đích: nền mờ ảo, chữ đọc được trên trên
+═══════════════════════════════════════════════════════
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [A] MIDJOURNEY (copy nguyên, paste vào /imagine)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+/imagine prompt:
+soft dreamy Vietnamese spring landscape background texture,
+scattered hoa mai blossoms (yellow apricot flowers) and white wild orchids and milk flowers (hoa sữa) floating on aged parchment paper surface,
+ink wash painting aesthetic meets fine art photography,
+warm ivory paper tone #f6f1e8, golden amber accents #ae8a5a, sage moss green #64725f, dusty warm mist #d8d0c4,
+bokeh light diffusion, very soft focus, low contrast, muted palette,
+subtle rice paper grain texture overlay,
+no text, no people, no harsh shadows,
+painterly, ethereal, poetic,
+seamless for web background use
+--ar 16:9 --style raw --stylize 900 --v 7
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [B] DALL-E 3 / ChatGPT (copy nguyên, paste vào ChatGPT)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Generate a wide landscape background image for a Vietnamese poetry heritage website.
+The image should feel like aged parchment paper scattered with delicate flowers:
+yellow hoa mai (Vietnamese apricot blossoms), white wild orchids, and soft pink milk flowers (hoa sữa).
+Style: ink wash watercolor meets fine art photography. Very soft, dreamy, ethereal atmosphere.
+
+Color palette:
+- Dominant: warm ivory / aged paper (#f6f1e8, #fffdfc)
+- Accent: golden amber (#ae8a5a), sage green (#64725f)
+- Subtle shadow tones: dusty brown (#6b5b4d), pale mist (#d8d0c4)
+
+The composition must work as a web page background:
+- Very low contrast (no harsh darks or whites)
+- Soft bokeh, out-of-focus flower petals
+- Subtle paper grain / rice paper texture
+- No text, no human figures
+- Landscape orientation 16:9
+- Painterly and poetic mood suitable for classical Vietnamese poetry
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [C] STABLE DIFFUSION (positive + negative)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+POSITIVE:
+(soft bokeh floral background:1.4), vietnamese hoa mai yellow blossoms, white orchid petals, hoa sua milk flowers, aged parchment paper texture, watercolor ink wash, warm ivory tones, golden amber light, sage moss green, dreamy ethereal atmosphere, rice paper grain, very low contrast, seamless web background, no text, painterly, 8k, ultra-detailed
+
+NEGATIVE:
+sharp edges, dark shadows, high contrast, text, letters, watermark, person, face, harsh lighting, neon, modern, digital glitch, oversaturated, ugly, blurry (except intentional bokeh)
+
+Sampler: DPM++ 2M Karras | Steps: 35 | CFG: 6.5 | Size: 1920×1080
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [D] ADOBE FIREFLY / CANVA AI (đơn giản hơn)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Style: Soft watercolor painting
+Subject: Delicate Vietnamese spring flowers — yellow apricot blossoms (hoa mai),
+         white orchids, soft pink milk flowers — scattered on aged parchment paper.
+Mood: Dreamy, nostalgic, poetic, classical Vietnamese
+Colors: Warm ivory, golden amber, sage green, pale mist — all muted and soft
+Background use: Must be very low contrast, suitable for text overlay
+Aspect ratio: 16:9 (widescreen landscape)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  SAU KHI CÓ ẢNH — Cách tích hợp vào website
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Lưu ảnh vào:  public/images/page-background.jpg
+2. Ảnh nên ở độ phân giải ≥ 1920×1080, nén về ≤ 400KB (dùng squoosh.app)
+3. Trong globals.css, thêm vào body:
+
+   body {
+     background-image: url('/images/page-background.jpg');
+     background-size: cover;
+     background-attachment: fixed;
+     background-position: center;
+   }
+
+   Hoặc thêm overlay để chữ luôn đọc được:
+
+   body::before {
+     content: "";
+     position: fixed;
+     inset: 0;
+     background: rgba(246, 241, 232, 0.82);  /* --color-paper với độ mờ */
+     pointer-events: none;
+     z-index: 0;
+   }
+
+══════════════════════════════════════════════════════
+  Ghi chú: Prompt [A] Midjourney cho kết quả đẹp nhất
+  với phong cách thi ca cổ điển Việt Nam.
+══════════════════════════════════════════════════════
